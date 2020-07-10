@@ -1,0 +1,32 @@
+server:
+  port: 6300
+  servlet:
+    context-path: /game
+
+spring:
+  datasource:
+    url: jdbc:h2:file:E:/AppData/Service/gamification;DB_CLOSE_ON_EXIT=FALSE;
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+  h2:
+    console:
+      enabled: true
+  rabbitmq:
+    host: 192.168.3.18
+    port: 5672
+    username: lusiyi
+    password: 123456
+    publisher-confirm-type: correlated
+
+multiplication:
+  host: http://localhost:8081/practical
+  exchange: multiplication_exchange
+  solved:
+    key: multiplication.solved
+  queue: gamification.multiplication.queue
+  anything:
+    routing-key: multiplication.*
